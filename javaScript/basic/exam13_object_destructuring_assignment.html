@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        //객체 생성
+        const board = {
+            title: "오늘은 화요일"
+            ,content: "오늘은 과제를 열심히 하겠어요. 일찍 가지 않겠어요."
+            ,writer: "감자바"
+        };
+
+        //구조 분해 할당(대입)
+        var {title} = board;
+        console.log("title: " + title);
+
+        var {title, writer} = board;
+        console.log("title: " + title);
+        console.log("writer: " + writer);
+
+        //함수 선언
+        function fun1({title}) {
+            console.log("title: " + title);
+        }
+
+        fun1(board);
+
+        //구조 분해 할당2
+        const member = {
+            mid: "summer"
+            ,name: "한여름"
+            ,age: 30
+        };
+
+        var {mid, ...rest} = member;
+        console.log("mid: ", mid);
+        console.log(rest);
+
+        //기존 객체에 새로운 멤버를 추가해서 새 객체 생성
+        function addBno(obj) {
+            // obj.bno = 5;
+            // return obj;
+            return {...obj, bno:5, title:"기존에 존재하던 title필드의 값이 대체됨."};
+        }
+
+        var newBoard = addBno(board);
+        console.log(board === newBoard);
+        console.log(newBoard);
+        console.log({...board, bno:5, title:"기존에 존재하던 title필드의 값이 대체됨."});
+
+        let addEmail = (m) => ({ ...m, email:m.mid + "@mycompany.com" });
+        let newMember = addEmail(member);
+        console.log(member);
+        console.log(newMember);
+        </script>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Object Destructuring Assignment(객체 구조 분해 할당)
+        </div>
+
+        <div class="card-body">
+        </div>
+    </div>
+</body>
+</html>

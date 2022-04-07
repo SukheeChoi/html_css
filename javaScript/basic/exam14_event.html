@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <img src="/javaScript/images/photo5.jpg"/> -->
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Button Client Event Handling
+        </div>
+
+        <div class="card-body">
+            <button onclick="handleBtn1('photo5.jpg')" class="btn btn-info btn-sm">버튼1</button>
+            <a href="javascript:handleBtn1('photo6.jpg')" class="btn btn-info btn-sm">버튼1</a>
+            <hr/>
+            <div id="content1"></div>
+        </div>
+        <script>
+            function handleBtn1(imgName) {
+                console.log("handleBtn1 running...");
+                const content1 = document.getElementById("content1");
+                content1.innerHTML += "<img src='/javaScript/images/" + imgName+  "' width='100px' height='100px'/>";
+            }
+        </script>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Event Target and Value
+        </div>
+
+        <div class="card-body">
+            <input id="input1" type="text" onkeyup="handleInput()"/>
+            <hr/>
+            <div id="content2"></div>
+        </div>
+        
+        <script>
+            function handleInput() {
+                console.log("handleInput running...");
+                const input1 = document.getElementById("input1");
+                const content2 = document.getElementById("content2");
+                content2.innerHTML = input1.value;
+                // console.log(input.value);
+            }
+        </script>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Event Info
+        </div>
+
+        <div class="card-body">
+            <input id="input2" type="text" onkeyup="handleEventInfo()"/>
+            <hr/>
+            <div id="content3"></div>
+        </div>
+
+        <script>
+            function handleEventInfo() {
+                console.log(event);
+                console.log(event.target);//event.target: event가 발생한 객체를 가리킴.
+                const content3 = document.getElementById("content3");
+                content3.innerHTML = event.target.value;
+            }
+        </script>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            Mouse Event
+        </div>
+
+        <div class="card-body">
+            <div style="width: 110px; height: 110px; border: 1px solid black;"
+                onmouseenter="handleMouseEnter()"
+                onmouseleave="handleMouseLeave()">
+                <img src="/javaScript/images/photo4.jpg" width="100px" height="100px"/>
+            </div>
+        </div>
+
+        <script>
+            function handleMouseEnter() {
+                console.log("handleMouseEnter is running...");
+                event.target.innerHTML = '<img src="/javaScript/images/photo5.jpg" width="100px" height="100px"/>';
+            }
+
+            function handleMouseLeave() {
+                console.log("handleMouseLeave is running...");
+                event.target.innerHTML = '<img src="/javaScript/images/photo4.jpg" width="100px" height="100px"/>';
+            }
+        </script>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Event PreventDefault
+        </div>
+
+        <div class="card-body">
+            <a onclick="handlePreventDefault1()" href="http://tomcat.apache.org">http://tomcat.apache.org</a>
+        </div>
+
+        <script>
+            function handlePreventDefault1() {
+                let status = confirm();
+                if(!status) {
+                    event.preventDefault();
+                    console.log("handlePreventDefault1() running...");
+                }
+            }
+        </script>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Event PreventDefault
+        </div>
+
+        <div class="card-body">
+           <form action="http://tomcat.apache.org" onsubmit="handlePreventDefault2()">
+               <input type="submit" value="제출" class="btn btn-info btn-sm"/>
+           </form>
+        </div>
+
+        <script>
+            function handlePreventDefault2() {
+                let status = confirm();//if문과 else문 중에서 택1로 사용하면 됨!!!
+                if(!status) {
+                    event.preventDefault();
+                    console.log("handlePreventDefault1() running...");
+                } else {
+                    event.target.submit();
+                }
+            }
+        </script>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Event PreventDefault
+        </div>
+
+        <div class="card-body">
+           <form action="http://tomcat.apache.org" onsubmit="handlePreventDefault2()">
+               <input type="submit" value="제출" class="btn btn-info btn-sm"/>
+           </form>
+        </div>
+
+        <script>
+            function handlePreventDefault2() {
+                let status = confirm();//if문과 else문 중에서 택1로 사용하면 됨!!!
+                if(!status) {
+                    event.preventDefault();
+                    console.log("handlePreventDefault1() running...");
+                } else {
+                    event.target.submit();
+                }
+            }
+        </script>
+    </div>
+
+
+</body>
+</html>

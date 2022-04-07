@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function requestGetAjax() {
+            $/*.ajax({
+                url: "exam05_response.html"
+                ,method: "get"
+                ,data: {pageNo:1}
+            }).done((data) => {
+                $("#content").html(data);
+            });*/
+
+            $.get("exam05_response.html", {pageNo:1}, (data) => {
+                $("#content").html(data);
+            });
+        }
+        
+        function requestPostAjax() {
+            //Live Server는 POST 요청 방식을 지원하지 않음
+            //따라서 아래 코드는 예외가 발생
+            //SpringFrame에서 POST 방식 설명하겠음.
+            $/*.ajax({
+                url: "exam05_response.html"
+                ,method: "get"
+                ,data: {pageNo:1}
+            }).done((data) => {
+                $("#content").html(data);
+            });*/
+    
+            $.post("exam05_response.html", {pageNo:1}, (data) => {
+                $("#content").html(data);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Ajax get() and post()
+        </div>
+
+        <div class="card-body">
+            <button class="btn btn-info btn-sm" onclick="requestGetAjax()">Ajax GET 요청</button>
+            <button class="btn btn-info btn-sm" onclick="requestPostAjax()">Ajax POST 요청</button>
+        <hr/>
+        <div id="content">
+
+          <div>
+            <div class="card">
+              <div class="card-header">
+                원래 내용
+              </div>
+              <div class="card-body">
+                <img src="/javaScript/images/photo4.jpg" width="200px"/>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        </div>
+    </div>
+</body>
+</html>

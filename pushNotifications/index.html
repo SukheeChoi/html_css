@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js"></script> -->
+
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    //   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+    import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyC0y_clIzsn18PeP7WbAjLntqYU0b1BvoU",
+        authDomain: "osstemproject01.firebaseapp.com",
+        projectId: "osstemproject01",
+        storageBucket: "osstemproject01.appspot.com",
+        messagingSenderId: "1000123949354",
+        appId: "1:1000123949354:web:cb93c012e6c97e64fffe53",
+        measurementId: "G-QZ3JML7J2Y",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    //   const analytics = getAnalytics(app);
+
+      // Initialize Firebase Cloud Messaging and get a reference to the service
+      const messaging = getMessaging(app);
+
+      // Add the public key generated from the console here.
+      messaging
+        .getToken({
+          vapidKey:
+            "BEkCQ63XKGxCzLBrJLZE2VlLlgutoX9Ib2x3zwaoIACT77LDnHamirxEAzsj5yw67HTaghXz0B_1U9CHNzsdqxs",
+        })
+        .then((currentToken) => {
+          if (currentToken) {
+            // Send the token to your server and update the UI if necessary
+            // ...
+          } else {
+            // Show permission request UI
+            console.log(
+              "No registration token available. Request permission to generate one."
+            );
+            // ...
+          }
+        })
+        .catch((err) => {
+          console.log("An error occurred while retrieving token. ", err);
+          // ...
+        });
+    </script>
+  </body>
+</html>

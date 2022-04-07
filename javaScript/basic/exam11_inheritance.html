@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        //Class 선언
+        class Car {
+            //생성자 선언 & 필드 선언
+            constructor(name="그랜저", price=0) {//name으로 값이 들어오지 않으면, 기본값으로 지정된 "그랜저"가 사용됨.
+                this.name = name;
+                this.price = price;
+                this.speed = 0;
+            }//,(콤마) XXX.
+
+            //메소드 선언
+            start() {
+                console.log(this.name + "을 시동을 겁니다.");
+            }
+
+            setPrice(price) {
+                this.price = price;
+            }
+        }
+
+        //자식 Class 선언
+        class SportsCar extends Car {
+            //생성자 선언 & 필드 선언
+            constructor(name="그랜저", price=0, turbo=false) {
+                //부모의 생성자 호출
+                super(name, price);
+                //새로운 필드 선언
+                this.turbo = turbo;
+            }
+
+            turnTurbo() {
+                if(this.turbo) {
+                    console.log("터보를 켰습니다.");
+                } else {
+                    console.log("터보 기능이 없습니다.");
+                }
+            }
+        }
+
+        //자식 객체 생성
+        let myCar = new SportsCar("포르쉐", 200000000, true);
+        console.log(myCar.name);
+        console.log(myCar.price);
+        console.log(myCar.speed);
+        console.log(myCar.turbo);
+        myCar.start();
+        myCar.setPrice(150000000);
+        myCar.turnTurbo();
+    </script>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Class 상속
+        </div>
+
+        <div class="card-body">
+        </div>
+    </div>
+</body>
+</html>

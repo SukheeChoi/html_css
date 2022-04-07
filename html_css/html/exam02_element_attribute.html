@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h3>링크 태그</h3>
+    <!-- 링크 태그 -->
+    <a href="http://www.w3schools.com">Visit w3schools</a> <br/> <!-- br: 개행 태그 -->
+    <a href="http://www.w3schools.com" target="_blank">Visit w3schools</a> <br/>
+    <a href="http://localhost:5501/html/exam01_html_structure.html">exam01_html_structure</a> <br/>
+    <!-- 현재 URL에서 포트 번호 이전까지 생략 -->
+    <a href="/html/exam01_html_structure.html">exam01_html_structure</a> <br/>
+    <!-- 현재 URL에서 상대 경로를 이용 -->
+    <a href="exam01_html_structure.html">exam01_html_structure</a> <a href="./exam01_html_structure.html">exam01_html_structure</a> 
+
+    <hr/>
+    <h3>이미지 태그</h3>
+    <img src="/images/photo1.jpg" alt="Italian Truli"/>
+    <img src="../images/photo1.jpg" width="200"/>
+    <img src="/images/photo1.jpg" width="200" height="200"/>
+    <img src="/images/photo20.jpg" alt="Italian Truli"/>
+    <hr/>
+
+    <h3>제목글 태그</h3>
+    <h1>Heading</h1>
+    <h2>Heading</h2>
+    <h3>Heading</h3>
+    <h4>Heading</h4>
+    <h5>Heading</h5>
+    <h6>Heading</h6>
+    <hr/>
+
+    <h3>문단 태그</h3>
+    <p>This is a paragraph sssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+    <p>This is another paragraph ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+    <hr/>
+
+    <h3>컨테이너 태그</h3>
+    <div style="background-color: aqua;">
+        <img src="../images/photo1.jpg" width="200"/>
+        <img src="/images/photo1.jpg" width="200" height="200"/>
+        <h4>Heading1</h4>
+        <h5>Heading1</h5>
+    </div>
+
+    <header style="background-color: aqua;">
+        <img src="../images/photo1.jpg" width="200"/>
+        <img src="/images/photo1.jpg" width="200" height="200"/>
+        <h4>Heading1</h4>
+        <h5>Heading1</h5>
+    </header>
+
+    <article style="background-color: aqua;">
+        <img src="../images/photo1.jpg" width="200"/>
+        <img src="/images/photo1.jpg" width="200" height="200"/>
+        <h4>Heading1</h4>
+        <h5>Heading1</h5>
+    </article>
+    <hr/>
+
+    <h3>테이블 테그</h3>
+    <table style="width: 300px;"> <!--50%, 100% 퍼센트로 지정가능. px단위로 절대값 지정가능.-->
+        <thead>
+            <tr>
+                <th>Title1</th>
+                <th>Title2</th>
+                <th>Title3</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Content1</td>
+                <td>Content2</td>
+                <td>Content3</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td>Content1</td>
+            <td>Content2</td>
+            <td>Content3</td>
+        </tr>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <button>확인</button>
+                    <button>취소</button>
+                </td>
+            </tr>
+
+        </tfoot>
+    </table>
+    <hr/>
+
+    <h3>목록 테그</h3>
+        <ul>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+        </ul>
+
+        <ol>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+        </ol>
+    <hr/>
+
+    <h3></h3>
+
+    <hr/>
+
+</body>
+</html>

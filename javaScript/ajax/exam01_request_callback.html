@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function requestAjax() {
+            console.log("1");
+            //비동기 요청
+            $.ajax({
+                // url: "http://aaa.mucompany.com/exam01_response.html"
+                url: "exam01_response2.html"
+                // ,async: false
+            }).done((data, textStatus, reponse) => {
+                console.log("2-done callback");
+                console.log(data);
+                console.log(textStatus);
+                // document.querySelector("#content").innerHTML = data;
+                $("#content").html(data);
+            }).fail((reponse) => {
+                console.log("2-fail callback");
+                if(reponse.status === 404) {
+                    console.log("리소스가 존재하지 않음");
+                } else if(reponse.status === 500) {
+                    console.log("서버 실행 오류가 발생");
+                }
+            }).always(() => {
+                console.log("always callback");
+            });
+
+            console.log("3");
+        }
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">Ajax 요청과 응답 처리</div>
+
+      <div class="card-body">
+        <button class="btn btn-info btn-sm" onclick="requestAjax()">Ajax 요청</button>
+        <hr />
+        <div id="content">
+          <div>
+            <div class="card">
+              <div class="card-header">원래 내용</div>
+              <div class="card-body">
+                <img src="/javaScript/images/photo4.jpg" width="200px" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

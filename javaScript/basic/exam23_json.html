@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      //JSON 객체 표기법
+      let strObj = '{"bno":1, "title":"제목1", "writer":"홍길동"}';
+
+      //JSON 배열 표기법
+      let strArr = '[10, "홍길동", true, null]';
+
+      //JSON -> JavaScript 객체 또는 배열
+      let obj = JSON.parse(strObj);
+      console.log(obj);
+
+      let arr = JSON.parse(strArr);
+      console.log(arr);
+
+      //JavaScript 객체 또는 배열 -> JSON
+      let strObj2 = JSON.stringify(obj);
+      console.log(strObj);
+
+      let strArr2 = JSON.stringify(arr);
+      console.log(strArr2);
+
+      //객체 배열 -> JSON
+      const boardList = [
+        { bno: 2, title: "제목2", writer: "홍길서" },
+        { bno: 5, title: "제목5", writer: "홍길북" },
+        { bno: 3, title: "제목3", writer: "홍길남" },
+        { bno: 1, title: "제목1", writer: "홍길동" },
+        { bno: 4, title: "제목4", writer: "홍길서" },
+      ];
+
+      let jsonBoardList = JSON.stringify(boardList);
+      console.log(jsonBoardList);
+
+      //JSON -> 객체 배열
+      let boardList2 = JSON.parse(jsonBoardList);
+      console.log(boardList2);
+
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">JSON 처리하기</div>
+
+      <div class="card-body"></div>
+    </div>
+  </body>
+</html>

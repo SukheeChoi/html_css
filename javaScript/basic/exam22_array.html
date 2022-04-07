@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function basic() {
+        //배열 기본
+        const arr = ["Java", "JavaScript", "Vue"];
+        arr[0] = "Spring";
+        console.log(arr.length);
+        console.log("");
+
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr[i]);
+        }
+        console.log("");
+        for (let item of arr) {
+          console.log(item);
+        }
+        console.log("");
+      }
+
+      function appendItem() {
+        const arr = [];
+        arr.push("html");
+        arr.push("css");
+        for (let item of arr) {
+          console.log(item);
+        }
+      }
+
+      function removeAndInsertItem() {
+        const arr = ["Banana", "Orange", "Apple", "Mango"];
+
+        //항목 삭제
+        // arr.splice(2, 1);
+
+        //항목 삽입
+        arr.splice(2, 0, "Lemon", "Kiwi");
+        console.log(arr);
+      }
+
+      function concatArray() {
+        const arr1 = ["Cecilie", "Lone"];
+        const arr2 = ["Emil", "Tobias", "Linus"];
+        const arr3 = arr1.concat(arr2);
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr3);
+      }
+
+      function filterItem() {
+        // const arr1 = [1, 2, 3, 4, 5];
+        // const arr2 = arr1.filter((item) => item % 2 === 0);
+        // const arr3 = arr1.filter(function (item) {
+        //   return item % 2 === 0;
+        // });
+        // console.log(arr2);
+        // console.log(arr3);
+
+        const arr4 = [
+          { bno: 1, title: "제목1", writer: "홍길동" },
+          { bno: 2, title: "제목2", writer: "홍길서" },
+          { bno: 3, title: "제목3", writer: "홍길남" },
+          { bno: 4, title: "제목4", writer: "홍길서" },
+          { bno: 5, title: "제목5", writer: "홍길북" },
+        ];
+
+        const arr5 = arr4.filter((item) => item.writer === "홍길서");
+        console.log(arr5);
+      }
+
+      function findItem() {
+        const arr = [
+          { bno: 1, title: "제목1", writer: "홍길동" },
+          { bno: 2, title: "제목2", writer: "홍길서" },
+          { bno: 3, title: "제목3", writer: "홍길남" },
+          { bno: 4, title: "제목4", writer: "홍길서" },
+          { bno: 5, title: "제목5", writer: "홍길북" },
+        ];
+
+        let board = arr.find((item) => item.bno === 3);
+        console.log(board);
+
+        let index = arr.findIndex((item) => item.bno === 3);
+        console.log(index);
+      }
+
+      function handleEachItem() {
+        const arr = [
+          { bno: 1, title: "제목1", writer: "홍길동" },
+          { bno: 2, title: "제목2", writer: "홍길서" },
+          { bno: 3, title: "제목3", writer: "홍길남" },
+          { bno: 4, title: "제목4", writer: "홍길서" },
+          { bno: 5, title: "제목5", writer: "홍길북" },
+        ];
+
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr[i]);
+        }
+
+        for (let board of arr) {
+          console.log(board);
+        }
+
+        arr.forEach((board) => {
+          // console.log(board);
+          for (let fieldName in board) {
+            console.log(`${fieldName}: `, board[fieldName]);
+          }
+          console.log("");
+        });
+      }
+
+      function mapItem() {
+        const arr1 = [1, 2, 3, 4, 5];
+        const arr2 = arr1.map((item) => item * 10);
+        console.log(arr2);
+
+        const arr = [
+          { bno: 1, title: "제목1", writer: "홍길동" },
+          { bno: 2, title: "제목2", writer: "홍길서" },
+          { bno: 3, title: "제목3", writer: "홍길남" },
+          { bno: 4, title: "제목4", writer: "홍길서" },
+          { bno: 5, title: "제목5", writer: "홍길북" },
+        ];
+
+        const arr4 = arr.map((item) => item.title);
+        console.log(arr4);
+
+        const arr5 = arr.map((item) => ({
+          ...item,
+          writer: "홍길동",
+          date: new Date().toLocaleDateString(),
+        }));
+        console.log(arr5);
+      }
+
+      function sortItem() {
+        const arr1 = ["Banana", "Orange", "Apple", "Mango"];
+        console.log(arr1);
+        arr1.sort();
+        console.log(arr1);
+        arr1.reverse();
+        console.log(arr1);
+
+        const arr2 = [
+          { bno: 2, title: "제목2", writer: "홍길서" },
+          { bno: 5, title: "제목5", writer: "홍길북" },
+          { bno: 3, title: "제목3", writer: "홍길남" },
+          { bno: 1, title: "제목1", writer: "홍길동" },
+          { bno: 4, title: "제목4", writer: "홍길서" },
+        ];
+        
+        let arr3 = arr2.sort((item1, item2) => item1.bno - item2.bno);
+        console.log(arr3);
+        console.log("");
+        
+        const arr4 = [
+          { bno: 2, title: "제목2", writer: "홍길서" },
+          { bno: 5, title: "제목5", writer: "홍길북" },
+          { bno: 3, title: "제목3", writer: "홍길남" },
+          { bno: 1, title: "제목1", writer: "홍길동" },
+          { bno: 4, title: "제목4", writer: "홍길서" },
+        ];
+        let arr5 = arr4.sort((item1, item2) => -(item1.bno - item2.bno));
+        console.log(arr5);
+
+      }
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">Array(배열)</div>
+
+      <div class="card-body">
+        <button onclick="basic()" class="btn btn-info btn-sm mb-2">기본</button>
+        <button onclick="appendItem()" class="btn btn-info btn-sm mb-2">새로운 항목 추가</button>
+        <button onclick="removeAndInsertItem()" class="btn btn-info btn-sm mb-2">항목 제거 및 삽입</button> <br />
+        <button onclick="concatArray()" class="btn btn-info btn-sm mb-2">새로운 배열로 합치기</button>
+        <button onclick="filterItem()" class="btn btn-info btn-sm mb-2">필터링후 새로운 배열 생성</button>
+        <button onclick="findItem()" class="btn btn-info btn-sm mb-2">항목 찾기</button> <br />
+        <button onclick="handleEachItem()" class="btn btn-info btn-sm mb-2">항목 일괄 처리</button>
+        <button onclick="mapItem()" class="btn btn-info btn-sm mb-2">항목을 다른 항목으로 매핑한 배열 생성</button>
+        <button onclick="sortItem()" class="btn btn-info btn-sm mb-2">항목 정렬</button> <br />
+      </div>
+    </div>
+  </body>
+</html>

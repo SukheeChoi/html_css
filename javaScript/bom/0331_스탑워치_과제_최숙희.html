@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+  <body>
+    <div class="card">
+    <!-- digital clock -->
+    <div class="card">
+      <div class="card-header">Window Method - digital clock</div>
+
+      <div class="card-body">
+        <div id="clock" class="pl-5" style="width: 750px; height: 150px; font-size: 100px; color: aliceblue; background-color: black; border-radius: 10px;">
+            &nbsp &nbsp &nbsp 00 : 00 : 00
+        </div>
+        <!-- <p id="clock" style="color: aliceblue; background-color: black"></p> -->
+        <br />
+        <button id="start-clock" onclick="showTime(), disabledShowTime()" class="btn btn-light">시작</button>
+        <button id="stop-clock" onclick="stopClock(), abledShowTime()" class="btn btn-dark">중지</button>
+        <!-- <a href="javascript:showTime()" class="btn btn-info btn-sm mr-2">시작</a> -->
+        <!-- <a href="javascript:stopClock()" class="btn btn-info btn-sm mr-2">중지</a> -->
+      </div>
+
+      <script>
+        var space = "  ";
+
+        function showTime() {
+        //   disabledShowTime();
+          taskCountingTime = window.setInterval(function () {
+            let now = new Date();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+            //00시 -> 24시
+            if(hour === 0) {
+                hour = 24;
+            }
+            //AM || PM
+            let amOrPm = "오전";
+            console.log(amOrPm);
+            if(12 <= hour && hour <= 23) {//hour
+                console.log(now.getHours());
+                amOrPm = "오후";
+            }
+            console.log(amOrPm);
+            //오전/오후 시간 모두 1~12시로 표시되도록.
+            if(12 < hour) {
+                hour = hour - 12;
+            }
+
+
+            //0붙이기.
+            if(hour < 10) {
+                hour = "0"+hour;
+            }
+            if(minute < 10) {
+                minute = "0"+minute;
+            }
+            if(second < 10) {
+                second = "0"+second;
+            }
+            var shownTime = window.document.getElementById("clock");
+            shownTime.innerHTML = `${amOrPm} ${hour} : ${minute} : ${second}`;
+          }, 1000);
+        }
+
+        function stopClock() {
+          window.clearTimeout(taskCountingTime);
+        }
+
+        function disabledShowTime() {
+          let targetButton = window.document.getElementById("start-clock");
+          if (targetButton.disabled === false) {
+            targetButton.disabled = true;
+          }
+        }
+        function abledShowTime() {
+          let targetButton = window.document.getElementById("start-clock");
+          if (targetButton.disabled === true) {
+            targetButton.disabled = false;
+          }
+        }
+      </script>
+    </div>
+
+    <!-- stopwatch -->
+    <div class="card">
+      <div class="card-header">Window Method - stopwatch</div>
+
+      <div class="card-body">
+        <div id="stopwatch" class="pl-4" style="width: 600px; height: 150px; font-size: 100px; color:lightyellow; background-color:darkgray; border-radius: 10px;">
+            00 : 00 : 000
+        </div>
+        <!-- <p id="stopwatch" style="width: 480px; height: 150px; text-align: center; justify-content: center; font-size: 100px; color: aliceblue; background-color: black; border-radius: 10px;"></p> -->
+        <br />
+        <button id="btn-startwatch" onclick="buttonDisabled(), sratCounting()" class="btn btn-light">시작</button>
+        <button id="btn-stopwatch" onclick="buttonAbled(), stopCounting()" class="btn btn-warning">중지</button>
+        <!-- <a href="javascript:sratCounting()" class="btn btn-info btn-sm mr-2">스탑워치 시작</a> -->
+        <!-- <a href="javascript:stopCounting()" class="btn btn-info btn-sm mr-2">스탑워치 중지</a> -->
+      </div>
+
+      <script>
+        function sratCounting() {
+          let startTime = new Date().getTime();//1000
+          console.log("startTime : " + startTime);
+          const millisecond = 1;
+          const second = millisecond * 1000;
+          const minute = second * 60;
+
+          taskIdStopWatch = window.setInterval(function () {
+            let endTime = new Date().getTime();//1001, 1002, 1003
+            let countTime = endTime - startTime; //1, 2, 3, 1005, 30000,  ...
+            let endMillisecond = parseInt(countTime % 1000);// 0~999
+            let endSecond = parseInt((countTime / second) % 60);//0~59
+            let endMinute = parseInt((countTime / minute) % 60);//0~59
+            //분, 초 0붙이기.
+            if(endMinute < 10) {
+                endMinute = "0"+endMinute;
+            }
+            if(endSecond < 10) {
+                endSecond = "0"+endSecond;
+            }
+            //밀리초 0 || 00 붙이기.
+            if(endMillisecond < 10) {
+                endMillisecond = "00"+endMillisecond;
+            } else if(endMillisecond < 100) {
+                endMillisecond = "0"+endMillisecond;
+            }
+            //1시간 직전에 멈추기.
+            if(endMillisecond === 59
+                && endSecond === 59
+                && endMillisecond === 999) {
+                    stopCounting();
+            }
+
+            let count = `${endMinute} : ${endSecond} : ${endMillisecond}`;
+            var stopwatch = window.document.getElementById("stopwatch");
+            stopwatch.innerHTML = count;
+            // console.log("count : " + count);
+          }, 1);
+        }
+
+        function stopCounting() {
+          window.clearTimeout(taskIdStopWatch);
+        }
+
+        function buttonDisabled() {
+          const targetButton = window.document.getElementById("btn-startwatch");
+          if (targetButton.disabled === false) {
+            targetButton.disabled = true;
+          }
+        }
+        function buttonAbled() {
+          const targetButton = window.document.getElementById("btn-startwatch");
+          if (targetButton.disabled === true) {
+            targetButton.disabled = false;
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>

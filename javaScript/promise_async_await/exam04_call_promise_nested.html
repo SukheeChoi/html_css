@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function work1() {
+        const promise = new Promise((resolve, reject) => {
+          console.log("시간을 요하는 작업1...");
+          const success = true;
+        //   const success = false;
+          if (success) {
+            resolve({ status: "work1-success", value: 100 });
+          } else {
+            reject({ status: "work1-fail", message: "Time Out" });
+          }
+        });
+        return promise;
+      }
+      function work2() {
+        const promise = new Promise((resolve, reject) => {
+          console.log("시간을 요하는 작업2...");
+          const success = true;
+        //   const success = false;
+          if (success) {
+            resolve({ status: "work2-success", value: 100 });
+          } else {
+            reject({ status: "work2-fail", message: "Time Out" });
+          }
+        });
+        return promise;
+      }
+
+      function doWork1() {
+        //T1
+        work1()
+          .then((data) => {
+            //T2
+            console.log(data);
+            work2()
+              .then((data) => {
+                //T2
+                console.log(data);
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+              .finally(() => {
+                console.log("마무리2");
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .finally(() => {
+            console.log("마무리1");
+          });
+
+          async function doWork2() {//T2
+            try {
+                let data1 = await work1();
+                console.log(data1);
+                let data2 = await work2();
+                console.log(data2);
+            } catch(error) {
+                console.log(error);
+            } finally {
+                console.log("마무리");
+            }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">Promise 중첩 실행</div>
+
+      <div class="card-body">
+        <button class="btn btn-info btn-sm mr-2" onclick="doWork1()">방법1</button>
+        <button class="btn btn-info btn-sm mr-2" onclick="doWork2()">방법2</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //전역변수: 선언된 위치부터, 파일의 끝부분까지 어디에서든 사용가능한 변수.
+        var var1 = 1;
+        let var2 = 2;
+        const var3 = 3; // 값 변경 불가
+        var4 = 4;
+
+        //전역변수 사용
+        var1 = 10;
+        var2 = 20;
+        // var3 = 30;
+        var4 = 40;
+
+        console.log("var1: " + var1);
+        console.log("var2: " + var2);
+        console.log("var3: " + var3);
+        console.log("var4: " + var4);
+
+        //함수(객체의 실행블록과 무관한 흐름을 가짐?)
+        function fun1() {
+            if(true) {
+                var var5 = 5;//함수 변수 - 선언된 함수 안에서만 사용 가능.
+                let var6 = 6;//로컬 변수 - 선언된 블록? 안에서만 사용 가능.
+                var7 = 7;//전역 변수
+                console.log("var1: " + var1);
+                console.log("var2: " + var2);
+                console.log("var3: " + var3);
+                console.log("var4: " + var4);
+                console.log("var5: " + var5);
+                console.log("var6: " + var6);
+                console.log("var7: " + var7);
+            }
+            console.log("");
+            console.log("var1: " + var1);
+            console.log("var2: " + var2);
+            console.log("var3: " + var3);
+            console.log("var4: " + var4);
+            console.log("var5: " + var5);
+            // console.log("var6: " + var6);
+            console.log("var7: " + var7);
+        }
+
+
+        //함수 호출
+        fun1();
+
+        //변수 사용
+        console.log("");
+        console.log("var1: " + var1);
+        console.log("var2: " + var2);
+        console.log("var3: " + var3);
+        console.log("var4: " + var4);
+        // console.log("var5: " + var5);
+        // console.log("var6: " + var6);
+        console.log("var7: " + var7);
+    </script>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Variables(변수)
+        </div>
+
+        <div class="card-body">
+        </div>
+    </div>
+</body>
+</html>

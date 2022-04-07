@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //함수 선언----------------------------------------
+        function fun1() {
+            console.log("1");
+            console.log("2");
+            console.log("3");
+        }
+
+        //함수 호출
+        fun1();
+        console.log("");
+
+        // var result1 = fun2(3, 5);
+        // console.log("result1 : " + result1);
+
+        //함수 선언----------------------------------------
+        function fun2(x, y) {
+            console.log("x: " + x);
+            console.log("y: " + y);
+            let result = x + y;
+            return result;
+        }
+        //함수 호출
+        var result1 = fun2(3, 5);
+        console.log("result1 : " + result1);
+        console.log("");
+
+        //함수 선언----------------------------------------
+        function fun3(x, y=0) {
+            console.log("x: " + x);
+            console.log("y: " + y);
+            let result = x + y;
+            return result;
+        }
+        //함수 호출
+        let result2 = fun3(3);
+        let result3 = fun3(3, 5);
+        console.log("result2 : " + result2);
+        console.log("result3 : " + result3);
+        console.log("");
+
+        //함수선언----------------------------------------
+        let fun4 = function(x, y) {
+            console.log("x: " + x);
+            console.log("y: " + y);
+            let result = x + y;
+            return result;
+        };
+        //함수 호출
+        let result4 = fun4(10, 50);
+        console.log("result4: " + result4);
+        console.log("");
+
+        //화살표 함수 선언----------------------------------------
+        let fun5 = () => {
+            console.log("A");
+            console.log("B");
+        };
+        //함수 호출
+        fun5();
+
+        //화살표 함수 선언----------------------------------------
+        let fun6 = (x) => {
+            let result5 = x**2;
+            return result5;
+        };
+
+        //함수 호출
+        let result5 = fun6(10);
+        console.log("result5 : " + result5);
+        console.log("");
+
+         //화살표 함수 선언----------------------------------------
+        let fun8 = x => {
+            return x**2;
+        }
+        //함수 호출
+        let result7 = fun8(10);
+        console.log("result7 : " + result7);
+        console.log("");
+
+        ///화살표 함수 선언----------------------------------------
+        let fun9 = x => (x**2);
+        //함수 호출
+        let result8 = fun9(10);
+        console.log("result8 : " + result8);
+        console.log("");
+
+        ///화살표 함수 선언----------------------------------------
+        let fun10 = (x,y) => (x**2);
+        //함수 호출
+        let result9 = fun10(10, 20);
+        console.log("result9 : " + result9);
+        console.log("");
+
+        ///화살표 함수 선언----------------------------------------
+        let fun11 = () => {
+            console.log("Hello");
+        }
+        //함수 호출
+        fun11();
+        console.log("");
+
+        ///화살표 함수 선언----------------------------------------
+        let fun12 = () => console.log("Hello");
+        //함수 호출
+        fun12();
+        console.log("");
+
+        ///화살표 함수 선언----------------------------------------
+        let fun13 = () =>  {
+            return {name:"홍길동", age:20};
+        };
+        //함수 호출
+        let result10 = fun13();
+        console.log("result10: " + result10)//.name, .age
+        console.log("");
+
+        ///화살표 함수 선언----------------------------------------
+        let fun14 = () =>  ({name:"홍길동", age:20});
+        //함수 호출
+        let result11 = fun14();
+        console.log("result11: " + result11)
+        console.log("");
+    </script>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Function(함수)
+        </div>
+
+        <div class="card-body">
+            <button onclick="fun1()" class="btn btn-info">fun1() 호출</button>
+            <a href="javascript:fun1()" class="btn btn-success">fun1() 호출</a>
+
+            <hr/>
+
+            <!-- <a href="javascript:fun2(3, 5)" class="btn btn-info">fun2() 호출</a> -->
+            <button onclick="fun5()" class="btn btn-info">fun5() 호출</button>
+        </div>
+    </div>
+</body>
+</html>

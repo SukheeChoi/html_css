@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- padding: 컨테이너 안에서 간격을 띄우는 것. / margin: 컨테이너 경계 밖으로 간격을 띄우는 것.-->
+    <!--margin(상하, 좌우 순서. auto: (좌우) margin이 동일하게 들어감.)-->
+    <style>
+        #wrapper {
+            width: 700px;
+            background-color: gray;
+            margin: 0 auto;
+        }
+
+        #div1 {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            margin-bottom: 50px;
+        }
+
+        #div2 {
+            width: 150px;
+            height: 150px;
+            background-color: green;
+            margin: 0 0 0 50px;
+            padding: 50px 0 0 50px;
+        }
+
+        #div21 {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+        }
+
+        #div3 {
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="div1">
+            
+        </div>
+
+        <div id="div2">
+            <div id="div21"></div>
+        </div>
+
+        <div id="div3">
+
+        </div>
+    </div>
+</body>
+</html>

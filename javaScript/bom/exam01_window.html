@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">Window Properties - global variable</div>
+
+      <div class="card-body">
+        <button onclick="windowMember()" class="btn btn-info btn-sm">window 멤버</button>
+      </div>
+
+      <script>
+        //전역 변수
+        var var1 = 10;
+        var var2 = { name: "홍길동", age: 25 };
+
+        function fun1() {
+          console.log("fun1() is running...");
+        }
+
+        //전역 함수
+        function windowMember() {
+          console.log(var1, window.var1);
+          console.log(var2, window.var2);
+          fun1();
+          window.fun1();
+
+          document.getElementById("id");
+          window.document.getElementById("id");
+        }
+      </script>
+    </div>
+
+    <div class="card mt-3">
+      <div class="card-header">Window Properties - innerWidth, innerHeight</div>
+
+      <div class="card-body">
+        <button onclick="getWindowSize()" class="btn btn-info btn-sm">window 가로 크기 얻기</button>
+      </div>
+
+      <script>
+        function getWindowSize() {
+          console.log("가로 크기: ", window.innerWidth);
+          console.log("세로 크기: ", window.innerHeight);
+        }
+      </script>
+    </div>
+
+    <div class="card mt-3">
+      <div class="card-header">window Properties - location</div>
+
+      <div class="card-body">
+        <button onclick="infoURL()" class="btn btn-info btn-sm">URL 정보</button>
+        <button onclick="changeURL()" class="btn btn-info btn-sm">URL 변경</button>
+      </div>
+
+      <script>
+        function infoURL() {
+          console.log(window.location.href);
+          console.log(window.location.host);
+          console.log(window.location.hostname);
+          console.log(window.location.port);
+          console.log(window.location.pathname);
+        }
+
+        function changeURL() {
+          // window.location.href = "/javaScript/basic/exam14_event.html";
+          window.location.href = "http://tomcat.apache.org";
+        }
+      </script>
+    </div>
+
+    <div class="card mt-3">
+      <div class="card-header">window Properties - navigator</div>
+
+      <div class="card-body">
+        <button onclick="getCurrentLocation()" class="btn btn-info btn-sm">현재 좌표 정보 얻기</button>
+      </div>
+
+      <script>
+        function getCurrentLocation() {
+          window.navigator.geolocation.getCurrentPosition(function (position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            console.log(latitude, longitude);
+          });
+        }
+      </script>
+    </div>
+
+    <div class="card mt-3">
+      <div class="card-header">window Properties - history</div>
+
+      <div class="card-body">
+        <button onclick="goBack()" class="btn btn-info btn-sm mr-2">이전</button>
+        <button onclick="goFoward()" class="btn btn-info btn-sm mr-2">이후</button>
+      </div>
+
+      <script>
+        function goBack() {
+          window.history.back();
+        }
+        function goFoward() {
+          window.history.forward();
+        }
+      </script>
+    </div>
+
+    <div class="card mt-3">
+      <div class="card-header">window Properties - open()</div>
+
+      <div class="card-body">
+        <button onclick="showPopup1()" class="btn btn-info btn-sm mr-2">popup1</button>
+        <button onclick="showPopup2()" class="btn btn-info btn-sm mr-2">popup2</button>
+        <hr/>
+        <button onclick="showPopup3()" class="btn btn-info btn-sm mr-2">popup3</button>
+        <div id="comment" style="height: 50px;" class="my-2 border"></div>
+      </div>
+
+      <script>
+        function showPopup1() {
+          window.open("http://tomcat.apache.org", "_blank");
+        }
+        function showPopup2() {
+          window.open("http://tomcat.apache.org", "_self");
+        }
+        function showPopup3() {
+          window.open("exam01_popup.html", "", "top=100, left=100, width=350, height=470");
+        }
+      </script>
+    </div>
+  </body>
+</html>

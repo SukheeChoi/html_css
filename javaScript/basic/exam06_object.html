@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const myCar = {
+        //Field
+        name: "그랜저",
+        price: 50000000,
+        speed: 0,
+
+        //Method(방법1)
+        start: function() {
+            console.log("시동을 겁니다.");
+        },
+
+        setSpeed: function(speed) {
+            this.speed = speed;
+            if(this.speed === 0) {
+                this.start();
+                console.log("멈춰있습니다.");
+            } else {
+                console.log(this.speed + "로 달립니다.");
+            }
+        },
+
+        getSpeed: function() {
+            console.log(this);
+            return this.speed;
+        },
+
+        //Method(방법2)
+        run: () => {
+            console.log("달립니다.");
+        },
+
+        //화살표 함수(람다식) 안에서 this 키워드를 사용하지 않아야 혼동없음.
+        //왜냐면, this -> Windows 객체를 참조하기 때문.
+        // getName: () => {
+        //     console.log(this);
+        //     return this.name;
+        // },
+
+        //화살표 함수는, 데이터를, 데이터를 처리할 방식에 넘겨주기위해 사용.
+        //메소드 정의 그 자체를 위함X.
+        useLambda: function(fun) {
+            //데이터
+            let x = 5;
+            //(데이터)처리부
+            fun(x);
+        },
+
+        //Method(방법3)
+        brake() {
+            console.log("브레이크를 겁니다.");
+            console.log(this);
+            this.speed = 0;
+        }
+      };
+
+      //객체 사용
+      console.log(myCar.name);
+      console.log(myCar.price);
+      myCar.speed = 60;
+      console.log(myCar.speed);
+
+      myCar.start();
+      myCar.setSpeed(0);
+      myCar.setSpeed(60);
+      console.log(myCar.getSpeed());
+
+      myCar.run();
+    //   console.log(myCar.getName());
+
+      myCar.useLambda((x) => console.log(x + "를 방법1로 처리"));
+      myCar.useLambda((x) => console.log(x + "를 방법2로 처리"));
+
+      myCar.brake();
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">Object</div>
+
+      <div class="card-body"></div>
+    </div>
+  </body>
+</html>
